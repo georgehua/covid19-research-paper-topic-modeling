@@ -1,0 +1,9 @@
+# Standard Packages
+langdetect
+tqdm
+pandas
+logging
+nltk
+
+# local package
+-e .
