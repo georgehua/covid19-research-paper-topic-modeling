@@ -271,7 +271,7 @@ Example output for searching the title: "Logistics of community smallpox control
 
 Topic 4 key words (rank in order): model, data, analysis, models, time, different, learning, information, show, abstract
 
-![image-20210427152751381](C:\Users\George\AppData\Roaming\Typora\typora-user-images\image-20210427152751381.png)
+<img src="figures/search_result.png">
 
 
 
@@ -285,6 +285,29 @@ Topic 4 key words (rank in order): model, data, analysis, models, time, differen
 - Implement a search engine to allow user search keywords instead of the whole paper title
 
 
+
+## Project Structure
+
+
+
+    ├── README.md          <- The top-level README for developers using this project.
+    ├── data
+    │   ├── metadata.csv   <- Data source
+    │   ├── df_cleaned.csv <- Preprocessed data file
+    │
+    ├── docs               <- Github Pages documents
+    |
+    ├── figures            <- Markdown figures
+    │
+    │
+    ├── notebooks          <- Jupyter notebooks for EDA and experiments
+    │
+    ├── requirements.txt   <- The requirements file for reproducing the analysis environment, e.g.
+    │                         generated with `pip freeze > requirements.txt`
+    │
+    ├── src                <- Source code for use in this project.
+    │   │
+    │   ├── preproc.py     <- Script for preprocessing data
 
 
 
