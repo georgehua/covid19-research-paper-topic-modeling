@@ -208,7 +208,7 @@ ____________________
 
 
 
-**Short Introduction and comparison of the 3 topic models: (LDA, HDP)**
+**Short Introduction and comparison of the 2 topic models: (LDA, HDP)**
 
 The LDA model is guided by two principles:
 
@@ -267,7 +267,7 @@ LDA top 7 keywords for each topic:
 
 Example output for searching the title: "Logistics of community smallpox control through contact tracing and ring vaccination: a stochastic network model"
 
-
+System output:
 
 Topic 4 key words (rank in order): model, data, analysis, models, time, different, learning, information, show, abstract
 
