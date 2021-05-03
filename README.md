@@ -128,7 +128,7 @@ Features:
 - Turn each document instance into a feature vector using Term Frequency–inverse Document Frequency (TF-IDF).
 - Apply Dimensionality Reduction to each feature vector using t-Distributed Stochastic Neighbor Embedding (t-SNE) to cluster similar research articles in the two dimensional plane embedding.
 - Use Principal Component Analysis (PCA) to project down the dimensions to a number of dimensions that will keep .95 variance while removing noise and outliers in embedding.
-- Apply k-means clustering, where k is 20, to label each cluster on.
+- Apply k-means clustering, where k is 17, to label each cluster on.
 - Find the most frequent words in the cluster as the topic of the cluster.
 - Investigate the clusters visually on the plot, zooming down to specific articles as needed, and via classification using Stochastic Gradient Descent (SGD). 
 
@@ -237,9 +237,9 @@ K-means is fast to run and provide a "hard cluster" among the dataset, but our g
 
 Since topic Modeling is unsupervised, accuracy score is not  applicable for evaluating the model. Instead, we look at the coherence  score, which is an statistical measure of the topic model performance. A topic has a higher score of coherence if the words defining a topic  have a high probability of co-occurring cross documents.
 
-**LDA: 0.58686**
+**LDA Coherence Score: 0.58686**
 
-**HDP: 0.3932**
+**HDP Coherence Score: 0.3932**
 
 - Topic Coherence measures score a single topic by measuring the degree of semantic similarity between high scoring words in the topic.
 - C_v measure is based on a sliding window, one-set segmentation of the top words and an indirect confirmation measure that uses normalized pointwise mutual information (NPMI) and the cosine similarity
