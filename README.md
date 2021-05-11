@@ -33,11 +33,11 @@ Table of Content:
 
 **Project Goal:**
 
-The goal of this project is to reveal the topics from the massive amount of papers, and build a program that allows the user to search article title, then returns the most relevant research papers (along with their confidence score) from the dataset. 
+The goal of this project is to reveal the topics from the massive amount of medical papers, and build a program that allows users to search an article title, then returns the most relevant papers' information (along with their confidence score) from the dataset. 
 
 **Project Results:**
 
-From the best model (LDA), I discovered 15 topics and the top 7 words in each topics are listed below:
+Using LDA model, I discovered 15 topics and the top 7 keywords for each topic, as below:
 
 |      topic1 |    topic2 |      topic3 |     topic4 |    topic5 |        topic6 |       topic7 |      topic8 |     topic9 |      topic10 |   topic11 |     topic12 |   topic13 |   topic14 |      topic15 |
 | ----------: | --------: | ----------: | ---------: | --------: | ------------: | -----------: | ----------: | ---------: | -----------: | --------: | ----------: | --------: | --------: | -----------: |
@@ -49,7 +49,9 @@ From the best model (LDA), I discovered 15 topics and the top 7 words in each to
 |     disease |   disease |  infections |       host |      test |    healthcare |      disease |    compared |  countries |         self |  activity |   potential |  evidence | different |    bacterial |
 | respiratory |  clinical | respiratory |      viral |        rt | public_health |        blood |     methods |   measures |   associated |      drug |    research |    cancer |  learning |         hand |
 
-When a user search a paper title (eg. "Logistics of community smallpox control through contact tracing and ring vaccination: a stochastic network model"), the program will output the top 5 related papers to the user query, and score them based on the similarity score (prop_topic):
+**Recommendation Function:**
+
+When a user search a paper title (eg. "Logistics of community smallpox control through contact tracing and ring vaccination: a stochastic network model"), the program will output the top N related papers to the user's query, and score them based on the confidence score (prop_topic):
 
 | prop_topic |                                             title |                                          abstract | publish_time |                                           authors |                                               url |
 | ---------: | ------------------------------------------------: | ------------------------------------------------: | -----------: | ------------------------------------------------: | ------------------------------------------------: |
@@ -111,7 +113,7 @@ From the word cloud generated above, we start to see some levels of research dir
 
 
 
-### 5.,1. Dataset
+### 5.1. Dataset
 
 ```
 kaggle datasets download -d allen-institute-for-ai/CORD-19-research-challenge -f metadata.csv
