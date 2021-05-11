@@ -13,7 +13,7 @@ Table of Content:
 - [3. Analysis Pathway:](#3-analysis-pathway)
 - [4. Exploratory Data Analysis](#4-exploratory-data-analysis)
 - [5. Walk Through the Project](#5-walk-through-the-project)
-  - [5.,1. Dataset](#51-dataset)
+  - [5.1. Dataset](#51-dataset)
   - [5.2. Data Preprocessing](#52-data-preprocessing)
   - [5.3. Modeling](#53-modeling)
   - [5.4. Evaluation](#54-evaluation)
