@@ -1,14 +1,75 @@
 <img src="figures/dataset-cover.png">
 
+
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+Table of Content:
+
+
+- [1. Executive Summary:](#1-executive-summary)
+- [2. Introduction](#2-introduction)
+- [3. Analysis Pathway:](#3-analysis-pathway)
+- [4. Exploratory Data Analysis](#4-exploratory-data-analysis)
+- [5. Walk Through the Project](#5-walk-through-the-project)
+  - [5.,1. Dataset](#51-dataset)
+  - [5.2. Data Preprocessing](#52-data-preprocessing)
+  - [5.3. Modeling](#53-modeling)
+  - [5.4. Evaluation](#54-evaluation)
+  - [5.5. Topic Results & Interpretation](#55-topic-results--interpretation)
+- [6. Next Step](#6-next-step)
+- [7.Project Structure](#7project-structure)
+- [8.Reference](#8reference)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+
+
+
+## 1. Executive Summary:
+
+
+
+**Project Goal:**
+
+The goal of this project is to reveal the topics from the massive amount of papers, and build a program that allows the user to search article title, then returns the most relevant research papers (along with their confidence score) from the dataset. 
+
+**Project Results:**
+
+From the best model (LDA), we discovered 15 topics and the top 7 words in each topics are listed below:
+
+|      topic1 |    topic2 |      topic3 |     topic4 |    topic5 |        topic6 |       topic7 |      topic8 |     topic9 |      topic10 |   topic11 |     topic12 |   topic13 |   topic14 |      topic15 |
+| ----------: | --------: | ----------: | ---------: | --------: | ------------: | -----------: | ----------: | ---------: | -----------: | --------: | ----------: | --------: | --------: | -----------: |
+|         cov |  patients |       virus |      cells |       pcr |        health |          ace |         air |      covid | participants |   protein |         new | treatment |     model | transmission |
+|        sars |     covid |     viruses |       cell |   samples |         covid | inflammatory |        high | population |      anxiety |   binding |    diseases |  clinical |      data |        masks |
+|    sars_cov |  hospital |   influenza | expression |  positive |      pandemic |           il | temperature |       risk |        women |  proteins | development |   studies |  analysis |         mask |
+| coronavirus | mortality |     vaccine |         cd |   testing |          care |         lung |        time |   pandemic |     symptoms |     spike |        many |   patient |    models |     exposure |
+|   infection |      risk |       viral |     immune | detection |        public |       immune |      method |      among |       stress | antiviral |       human |  patients |      time |         face |
+|     disease |   disease |  infections |       host |      test |    healthcare |      disease |    compared |  countries |         self |  activity |   potential |  evidence | different |    bacterial |
+| respiratory |  clinical | respiratory |      viral |        rt | public_health |        blood |     methods |   measures |   associated |      drug |    research |    cancer |  learning |         hand |
+
+When a user search a paper title (ex. "Logistics of community smallpox control through contact tracing and ring vaccination: a stochastic network model"), the program will output the top 5 related papers to the user query, and score them based on the similarity score (prop_topic):
+
+|                                             title |                                          abstract | publish_time |                                           authors |                                               url | prop_topic |
+| ------------------------------------------------: | ------------------------------------------------: | -----------: | ------------------------------------------------: | ------------------------------------------------: | ---------: |
+|     Equitable d-degenerate Choosability of Graphs | let formula see text class d-degenerate graphs... |   2020-04-30 | Drgas-Burchardt, Ewa; Furmańczyk, Hanna; Sidor... | https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7... |   0.867478 |
+| Transition Property for [Formula: see text]-Po... | 1985 restivo salemi presented list five proble... |   2020-05-26 |                                  Rukavicka, Josef | https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7... |   0.826024 |
+|       Edge-Disjoint Branchings in Temporal Graphs | temporal digraph formula see text triple formu... |   2020-04-30 | Campos, Victor; Lopes, Raul; Marino, Andrea; S... | https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7... |   0.815862 |
+| Some asymptotic properties of kernel regressio... | present consider nonparametric regression mode... |   2020-08-17 |                    Bouzebda, Salim; Didi, Sultana | https://doi.org/10.1007/s13163-020-00368-6; ht... |   0.815116 |
+| Tuning the overlap and the cross-layer correla... | properties potential overlap networks formula ... |   2018-03-09 |                       Juher, David; Saldaña, Joan | https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7... |   0.810232 |
+
+
+
+## 2. Introduction
+
 In response to the COVID-19 pandemic, the White House and a coalition of leading research groups have prepared the COVID-19 Open Research Dataset (CORD-19). CORD-19 is a resource of over 300,000 scholarly articles (by 2021 April), about COVID-19, SARS-CoV-2, and related coronaviruses. This freely available dataset is provided to the global research community to apply recent advances in natural language processing and other AI techniques to generate new insights in support of the ongoing fight against this infectious disease. There is a growing urgency for these approaches because of the rapid acceleration in new coronavirus literature, making it difficult for the medical research community to keep up.
 
 
 
-**The goal of this project is to reveal the topics from the massive amount of papers, and build a program that allows the user to search article title, then returns the most relevant research papers (along with their confidence score) from the dataset.** 
 
 
-
-**Analysis Pathway:**
+## 3. Analysis Pathway:
 
 1. EDA & Data Preprocessing
 2. Modeling approach 1: TF-IDF + PCA to create features -> K-means to find clusters -> Most frequent words on each cluster to reveal topics
@@ -20,7 +81,7 @@ In response to the COVID-19 pandemic, the White House and a coalition of leading
 
 
 
-## Exploratory Data Analysis
+## 4. Exploratory Data Analysis
 
 Link for EDA: https://georgehua.github.io/covid19-research-paper-topic-modeling/EDA
 
@@ -46,11 +107,11 @@ From the word cloud generated above, we start to see some levels of research dir
 
 
 
-## Walk Through the Project
+## 5. Walk Through the Project
 
 
 
-### 1. Dataset
+### 5.,1. Dataset
 
 ```
 kaggle datasets download -d allen-institute-for-ai/CORD-19-research-challenge -f metadata.csv
@@ -89,7 +150,7 @@ Data columns (total 19 columns):
 
 
 
-### 2. Data Preprocessing
+### 5.2. Data Preprocessing
 
 ```
 python src/preproc.py -i <INPUT_FILE_NAME> -dir <DATA_DIRECTORY>
@@ -119,7 +180,7 @@ Features:
 
 
 
-### 3. Modeling
+### 5.3. Modeling
 
 
 
@@ -225,7 +286,7 @@ As far as pros and cons, HDP has the advantage that the maximum number of topics
 
 
 
-### 4. Evaluation
+### 5.4. Evaluation
 
 
 
@@ -249,7 +310,7 @@ Since topic Modeling is unsupervised, accuracy score is not  applicable for eval
 
 
 
-### 5. Topic Results & Interpretation
+### 5.5. Topic Results & Interpretation
 
 
 
@@ -261,7 +322,15 @@ LDA Topic Viz with pyLDAvis:
 
 LDA top 7 keywords for each topic:
 
-<img src="figures/LDA_top_k_topics.png">
+|      topic1 |    topic2 |      topic3 |     topic4 |    topic5 |        topic6 |       topic7 |      topic8 |     topic9 |      topic10 |   topic11 |     topic12 |   topic13 |   topic14 |      topic15 |
+| ----------: | --------: | ----------: | ---------: | --------: | ------------: | -----------: | ----------: | ---------: | -----------: | --------: | ----------: | --------: | --------: | -----------: |
+|         cov |  patients |       virus |      cells |       pcr |        health |          ace |         air |      covid | participants |   protein |         new | treatment |     model | transmission |
+|        sars |     covid |     viruses |       cell |   samples |         covid | inflammatory |        high | population |      anxiety |   binding |    diseases |  clinical |      data |        masks |
+|    sars_cov |  hospital |   influenza | expression |  positive |      pandemic |           il | temperature |       risk |        women |  proteins | development |   studies |  analysis |         mask |
+| coronavirus | mortality |     vaccine |         cd |   testing |          care |         lung |        time |   pandemic |     symptoms |     spike |        many |   patient |    models |     exposure |
+|   infection |      risk |       viral |     immune | detection |        public |       immune |      method |      among |       stress | antiviral |       human |  patients |      time |         face |
+|     disease |   disease |  infections |       host |      test |    healthcare |      disease |    compared |  countries |         self |  activity |   potential |  evidence | different |    bacterial |
+| respiratory |  clinical | respiratory |      viral |        rt | public_health |        blood |     methods |   measures |   associated |      drug |    research |    cancer |  learning |         hand |
 
 
 
@@ -271,14 +340,20 @@ System output:
 
 Topic 4 key words (rank in order): model, data, analysis, models, time, different, learning, information, show, abstract
 
-<img src="figures/search_result.png">
+|                                             title |                                          abstract | publish_time |                                           authors |                                               url | prop_topic |
+| ------------------------------------------------: | ------------------------------------------------: | -----------: | ------------------------------------------------: | ------------------------------------------------: | ---------: |
+|     Equitable d-degenerate Choosability of Graphs | let formula see text class d-degenerate graphs... |   2020-04-30 | Drgas-Burchardt, Ewa; Furmańczyk, Hanna; Sidor... | https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7... |   0.867478 |
+| Transition Property for [Formula: see text]-Po... | 1985 restivo salemi presented list five proble... |   2020-05-26 |                                  Rukavicka, Josef | https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7... |   0.826024 |
+|       Edge-Disjoint Branchings in Temporal Graphs | temporal digraph formula see text triple formu... |   2020-04-30 | Campos, Victor; Lopes, Raul; Marino, Andrea; S... | https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7... |   0.815862 |
+| Some asymptotic properties of kernel regressio... | present consider nonparametric regression mode... |   2020-08-17 |                    Bouzebda, Salim; Didi, Sultana | https://doi.org/10.1007/s13163-020-00368-6; ht... |   0.815116 |
+| Tuning the overlap and the cross-layer correla... | properties potential overlap networks formula ... |   2018-03-09 |                       Juher, David; Saldaña, Joan | https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7... |   0.810232 |
 
 
 
 
 
 
-### 6. Next Step
+## 6. Next Step
 
 - Build a graphical interface to allow better user experience to interact with the program
 
@@ -286,7 +361,7 @@ Topic 4 key words (rank in order): model, data, analysis, models, time, differen
 
 
 
-## Project Structure
+## 7.Project Structure
 
 
 
@@ -311,12 +386,11 @@ Topic 4 key words (rank in order): model, data, analysis, models, time, differen
 
 
 
-## Reference
+## 8.Reference
 
-https://towardsdatascience.com/evaluate-topic-model-in-python-latent-dirichlet-allocation-lda-7d57484bb5d0
+[Shashank Kapadia, Evaluate Topic Models: Latent Dirichlet Allocation (LDA)](https://towardsdatascience.com/evaluate-topic-model-in-python-latent-dirichlet-allocation-lda-7d57484bb5d0)
 
-https://www.kaggle.com/allen-institute-for-ai/CORD-19-research-challenge/code?datasetId=551982&sortBy=voteCount
+[Kaggle, COVID-19 Open Research Dataset Challenge (CORD-19), n AI challenge with AI2, CZI, MSR, Georgetown, NIH & The White House](https://www.kaggle.com/allen-institute-for-ai/CORD-19-research-challenge/code?datasetId=551982&sortBy=voteCount)
 
+[Selva Prabhakaran, Topic modeling visualization – How to present the results of LDA models?](https://www.machinelearningplus.com/nlp/topic-modeling-visualization-how-to-present-results-lda-models/)
 
-
-Great article about visualizing topic modeling results: https://www.machinelearningplus.com/nlp/topic-modeling-visualization-how-to-present-results-lda-models/
