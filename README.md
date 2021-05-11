@@ -8,7 +8,7 @@
 Table of Content:
 
 
-- [1. Executive Summary:](#1-executive-summary)
+- [1. Executive Summary](#1-executive-summary)
 - [2. Introduction](#2-introduction)
 - [3. Analysis Pathway:](#3-analysis-pathway)
 - [4. Exploratory Data Analysis](#4-exploratory-data-analysis)
@@ -27,7 +27,7 @@ Table of Content:
 
 
 
-## 1. Executive Summary:
+## 1. Executive Summary
 
 
 
@@ -37,7 +37,7 @@ The goal of this project is to reveal the topics from the massive amount of pape
 
 **Project Results:**
 
-From the best model (LDA), we discovered 15 topics and the top 7 words in each topics are listed below:
+From the best model (LDA), I discovered 15 topics and the top 7 words in each topics are listed below:
 
 |      topic1 |    topic2 |      topic3 |     topic4 |    topic5 |        topic6 |       topic7 |      topic8 |     topic9 |      topic10 |   topic11 |     topic12 |   topic13 |   topic14 |      topic15 |
 | ----------: | --------: | ----------: | ---------: | --------: | ------------: | -----------: | ----------: | ---------: | -----------: | --------: | ----------: | --------: | --------: | -----------: |
@@ -49,15 +49,15 @@ From the best model (LDA), we discovered 15 topics and the top 7 words in each t
 |     disease |   disease |  infections |       host |      test |    healthcare |      disease |    compared |  countries |         self |  activity |   potential |  evidence | different |    bacterial |
 | respiratory |  clinical | respiratory |      viral |        rt | public_health |        blood |     methods |   measures |   associated |      drug |    research |    cancer |  learning |         hand |
 
-When a user search a paper title (ex. "Logistics of community smallpox control through contact tracing and ring vaccination: a stochastic network model"), the program will output the top 5 related papers to the user query, and score them based on the similarity score (prop_topic):
+When a user search a paper title (eg. "Logistics of community smallpox control through contact tracing and ring vaccination: a stochastic network model"), the program will output the top 5 related papers to the user query, and score them based on the similarity score (prop_topic):
 
-|                                             title |                                          abstract | publish_time |                                           authors |                                               url | prop_topic |
-| ------------------------------------------------: | ------------------------------------------------: | -----------: | ------------------------------------------------: | ------------------------------------------------: | ---------: |
-|     Equitable d-degenerate Choosability of Graphs | let formula see text class d-degenerate graphs... |   2020-04-30 | Drgas-Burchardt, Ewa; Furmańczyk, Hanna; Sidor... | https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7... |   0.867478 |
-| Transition Property for [Formula: see text]-Po... | 1985 restivo salemi presented list five proble... |   2020-05-26 |                                  Rukavicka, Josef | https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7... |   0.826024 |
-|       Edge-Disjoint Branchings in Temporal Graphs | temporal digraph formula see text triple formu... |   2020-04-30 | Campos, Victor; Lopes, Raul; Marino, Andrea; S... | https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7... |   0.815862 |
-| Some asymptotic properties of kernel regressio... | present consider nonparametric regression mode... |   2020-08-17 |                    Bouzebda, Salim; Didi, Sultana | https://doi.org/10.1007/s13163-020-00368-6; ht... |   0.815116 |
-| Tuning the overlap and the cross-layer correla... | properties potential overlap networks formula ... |   2018-03-09 |                       Juher, David; Saldaña, Joan | https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7... |   0.810232 |
+| prop_topic |                                             title |                                          abstract | publish_time |                                           authors |                                               url |
+| ---------: | ------------------------------------------------: | ------------------------------------------------: | -----------: | ------------------------------------------------: | ------------------------------------------------: |
+|   0.867478 |     Equitable d-degenerate Choosability of Graphs | let formula see text class d-degenerate graphs... |   2020-04-30 | Drgas-Burchardt, Ewa; Furmańczyk, Hanna; Sidor... | https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7... |
+|   0.826024 | Transition Property for [Formula: see text]-Po... | 1985 restivo salemi presented list five proble... |   2020-05-26 |                                  Rukavicka, Josef | https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7... |
+|   0.815862 |       Edge-Disjoint Branchings in Temporal Graphs | temporal digraph formula see text triple formu... |   2020-04-30 | Campos, Victor; Lopes, Raul; Marino, Andrea; S... | https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7... |
+|   0.815116 | Some asymptotic properties of kernel regressio... | present consider nonparametric regression mode... |   2020-08-17 |                    Bouzebda, Salim; Didi, Sultana | https://doi.org/10.1007/s13163-020-00368-6; ht... |
+|   0.810232 | Tuning the overlap and the cross-layer correla... | properties potential overlap networks formula ... |   2018-03-09 |                       Juher, David; Saldaña, Joan | https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7... |
 
 
 
